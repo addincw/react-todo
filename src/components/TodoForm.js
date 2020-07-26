@@ -1,52 +1,54 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
+import { v4 as uuid } from 'uuid';
+
 import { TodoContext } from '../context/TodoContext';
 
-class TodoForm extends Component {
-    static contextType = TodoContext;
+function TodoForm() {
+    const [todos, setTodos] = useContext(TodoContext);
+    const [name, setName] = useState('');
 
-    state = {
-        name: ''
-    }
-
-    onChange = (e) => this.setState({ [e.target.name]: e.target.value })
-    onSubmit = (e) => {
-        const [ todos, todosDisplay, addTodo, deleteTodo, filterTodo, toggleCompleteTodo ] = this.context;
-        
+    const onChange = (e) => setName(e.target.value)
+    const onSubmit = (e) => {
         e.preventDefault()
-        addTodo(this.state.name)
-        this.setState({ name: '' })
+
+        setTodos([...todos, {
+            id: uuid(),
+            name,
+            is_complete: false,
+            is_disable: false
+        }])
+  
+        setName('')
     }
 
-    render() {
-      return (
-        <div className="card">
-            <div className="card-content">
-                <form onSubmit={this.onSubmit}>
-                    <div className="field">
-                        <div className="control has-icons-left">
-                            <input
-                                className="input"
-                                type="text"
-                                name="name"
-                                placeholder="What do you need to do?"
-                                value={this.state.name}
-                                onChange={this.onChange}
-                                />
-                            <span className="icon is-left">
-                                <i className="fas fa-clipboard-list"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div className="field">
-                        <button className="button is-link is-fullwidth">
-                            Add Todo
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-      );
-    }
+    return (
+      <div className="card">
+          <div className="card-content">
+              <form onSubmit={onSubmit}>
+                  <div className="field">
+                      <div className="control has-icons-left">
+                          <input
+                              className="input"
+                              type="text"
+                              name="name"
+                              placeholder="What do you need to do?"
+                              value={name}
+                              onChange={onChange}
+                              />
+                          <span className="icon is-left">
+                              <i className="fas fa-clipboard-list"></i>
+                          </span>
+                      </div>
+                  </div>
+                  <div className="field">
+                      <button className="button is-link is-fullwidth">
+                          Add Todo
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </div>
+    );
 }
 
 export default TodoForm;

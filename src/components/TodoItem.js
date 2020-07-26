@@ -1,47 +1,47 @@
-import React, { Component } from 'react';
-import { TodoContext } from '../context/TodoContext'; 
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { TodoContext } from '../context/TodoContext';
 
-class TodoItem extends Component {
-    static contextType = TodoContext;
+function TodoItem(props) {
+    const [todos, setTodos] = useContext(TodoContext);
+    const { todo } = props
     
-    onChange = () => {
-        const [ todos, todosDisplay, addTodo, deleteTodo, filterTodo, toggleCompleteTodo ] = this.context;
-        toggleCompleteTodo(this.props.todo.id)
+    const onChange = () => {
+        const { id } = props.todo
+        setTodos(todos.map(todo => {
+            if(todo.id === id) {
+                todo.is_complete = !todo.is_complete
+            }
+
+            return todo
+        }))
     }
-    onClick = () => {
-        const [ todos, todosDisplay, addTodo, deleteTodo, filterTodo, toggleCompleteTodo ] = this.context;
-        deleteTodo(this.props.todo.id)
+    const onClick = () => {
+        const { id } = props.todo
+        setTodos(todos.filter(todo => {
+            if(todo.id !== id) return todo
+        }))
     }
     
-    render() {
-      const { todo } = this.props
-
-      return (
-        <div className="field mb-5" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-            <label className="checkbox" style={{display: 'flex', alignItems: 'center'}}>
-                <input 
-                    type="checkbox"
-                    defaultChecked={todo.is_complete}
-                    disabled={todo.is_disable}
-                    onChange={this.onChange}
-                    />
-                <div className="pl-3">
-                    <p className={todo.is_complete ? 'label line-trought' : ''}>{todo.name}</p>
-                </div>
-            </label>
-            <button className="button is-small is-white" onClick={this.onClick} style={{display: todo.is_disable ? 'none' : 'block'}}>
-                <span className="icon is-small has-text-danger">
-                    <i className="fas fa-trash"></i>
-                </span>
-            </button>
-        </div>
-      );
-    }
-}
-
-TodoItem.propTypes = {
-    todo: PropTypes.object.isRequired
+    return (
+      <div className="field mb-5" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <label className="checkbox" style={{display: 'flex', alignItems: 'center'}}>
+              <input 
+                  type="checkbox"
+                  defaultChecked={todo.is_complete}
+                  disabled={todo.is_disable}
+                  onChange={onChange}
+                  />
+              <div className="pl-3">
+                  <p className={todo.is_complete ? 'label line-trought' : ''}>{todo.name}</p>
+              </div>
+          </label>
+          <button className="button is-small is-white" onClick={onClick} style={{display: todo.is_disable ? 'none' : 'block'}}>
+              <span className="icon is-small has-text-danger">
+                  <i className="fas fa-trash"></i>
+              </span>
+          </button>
+      </div>
+    );
 }
 
 export default TodoItem;

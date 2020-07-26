@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
+import { TodoContext } from '../context/TodoContext';
 
 class TodoForm extends Component {
+    static contextType = TodoContext;
+
     state = {
         name: ''
     }
 
     onChange = (e) => this.setState({ [e.target.name]: e.target.value })
     onSubmit = (e) => {
+        const [ todos, todosDisplay, addTodo, deleteTodo, filterTodo, toggleCompleteTodo ] = this.context;
+        
         e.preventDefault()
-        this.props.addTodo(this.state.name)
+        addTodo(this.state.name)
         this.setState({ name: '' })
     }
 

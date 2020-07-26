@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
+import { TodoContext } from '../context/TodoContext';
 
 class TodoFilter extends Component {
+    static contextType = TodoContext;
+
     state = {
         filter_title: '',
         filter_is_complete: false
     }
 
     onChange = async (e) => {
+        const [ todos, todosDisplay, addTodo, deleteTodo, filterTodo, toggleCompleteTodo ] = this.context;
+
         if(e.target.name === 'filter_is_complete') {
             await this.setState({ filter_is_complete: !this.state.filter_is_complete })
         }else {
             await this.setState({ [e.target.name]: e.target.value })
         }
 
-        this.props.filterTodo(this.state)
+        filterTodo(this.state)
     }
 
     render() {

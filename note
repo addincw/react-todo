@@ -13,6 +13,23 @@ react router
 cth hook : const [counter, setCounter] = useState(initial value)
            setCounter(counter+1)
 
+context api
+- bawaan dari react untuk handle application level state
+- cocok digunakan untuk component yang hanya menggunakan state
+- tidak cocok digunakan untuk mengupdate state, karena akan merender ulang seluruh component yang menggunakan context
+- 1. create file context.js
+  2. import createContext
+  3. initiate context + export
+      yang akan di import di component lain,
+      cara yang digunakan untuk mengakses data provider
+      1. import context
+      2. useContext dari react
+      3. const [value] = useContext(nama context)
+
+  4. initiate provider + export
+      menyimpan data apa yang akan di sediakan component lain, yang diakses melalui context
+      data harus di kirim melalui prop value
+
 source:
 React JS Crash Course: https://www.youtube.com/watch?v=sBws8MSXN7A&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5&t=5160s
 React Tutorial For Beginners: https://www.youtube.com/watch?v=dGcsHMXbSOA&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5

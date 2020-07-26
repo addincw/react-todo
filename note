@@ -10,6 +10,9 @@ react router
   4. jika memiliki file sendiri pakai route panggil nama componentnya
   5. tag a diganti dengan tag link
 
+cth hook : const [counter, setCounter] = useState(initial value)
+           setCounter(counter+1)
+
 source:
 React JS Crash Course: https://www.youtube.com/watch?v=sBws8MSXN7A&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5&t=5160s
 React Tutorial For Beginners: https://www.youtube.com/watch?v=dGcsHMXbSOA&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5

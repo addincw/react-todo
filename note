@@ -16,3 +16,5 @@ cth hook : const [counter, setCounter] = useState(initial value)
 source:
 React JS Crash Course: https://www.youtube.com/watch?v=sBws8MSXN7A&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5&t=5160s
 React Tutorial For Beginners: https://www.youtube.com/watch?v=dGcsHMXbSOA&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5
+
+Redux For Beginners | React Redux Tutorial: https://www.youtube.com/watch?v=CVpUuw9XSjY&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=6&t=0s

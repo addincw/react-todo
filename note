@@ -26,6 +26,10 @@ context api
       2. useContext dari react
       3. const [value] = useContext(nama context)
 
+- di class style ada 2 cara untuk akses context
+      1. this.context
+      2. wrap jsx dg <context.consumer />, render {context => (render sub component yang pakai data dari context)}
+
   4. initiate provider + export
       menyimpan data apa yang akan di sediakan component lain, yang diakses melalui context
       data harus di kirim melalui prop value
@@ -35,3 +39,4 @@ React JS Crash Course: https://www.youtube.com/watch?v=sBws8MSXN7A&list=PLYjQ_F9
 React Tutorial For Beginners: https://www.youtube.com/watch?v=dGcsHMXbSOA&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5
 
 React State Management Tutorial | Context Api | React Tutorial For Beginners: https://www.youtube.com/watch?v=35lXWvCuM8o&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=4
+React Context vs Redux - Who wins?: https://www.youtube.com/watch?v=OvM4hIxrqAw&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5

@@ -1,8 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { setPageTitle } from '../store/actions/page';
+
 import AppHeader from '../components/layouts/AppHeader';
 
-function About() {
+function About(props) {
+    props.setPageTitle('about')
+
     return (
         <React.Fragment>
             <AppHeader title={`About`}></AppHeader>
@@ -10,7 +16,7 @@ function About() {
                 <div className="card-content">
                     <p className="subtitle">Todo List</p>
                     <div className="content mb-5">
-                        Todo list is simple application to make a list activity will do, with some of feature: 
+                        Todo list is simple application to make a list activity will do, with some of feature:
                         <ul>
                             <li>filter activity</li>
                             <li>checklist activity when done</li>
@@ -29,4 +35,4 @@ function About() {
     )
 }
 
-export default About
+export default connect(null, { setPageTitle })(About)

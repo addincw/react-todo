@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { addTodo } from '../store/actions/todos';
 
 class TodoForm extends Component {
     state = {
@@ -13,35 +16,35 @@ class TodoForm extends Component {
     }
 
     render() {
-      return (
-        <div className="card">
-            <div className="card-content">
-                <form onSubmit={this.onSubmit}>
-                    <div className="field">
-                        <div className="control has-icons-left">
-                            <input
-                                className="input"
-                                type="text"
-                                name="name"
-                                placeholder="What do you need to do?"
-                                value={this.state.name}
-                                onChange={this.onChange}
+        return (
+            <div className="card">
+                <div className="card-content">
+                    <form onSubmit={this.onSubmit}>
+                        <div className="field">
+                            <div className="control has-icons-left">
+                                <input
+                                    className="input"
+                                    type="text"
+                                    name="name"
+                                    placeholder="What do you need to do?"
+                                    value={this.state.name}
+                                    onChange={this.onChange}
                                 />
-                            <span className="icon is-left">
-                                <i className="fas fa-clipboard-list"></i>
-                            </span>
+                                <span className="icon is-left">
+                                    <i className="fas fa-clipboard-list"></i>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div className="field">
-                        <button className="button is-link is-fullwidth">
-                            Add Todo
+                        <div className="field">
+                            <button className="button is-link is-fullwidth">
+                                Add Todo
                         </button>
-                    </div>
-                </form>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-      );
+        );
     }
 }
 
-export default TodoForm;
+export default connect(null, { addTodo })(TodoForm);

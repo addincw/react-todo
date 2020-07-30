@@ -1,20 +1,48 @@
-react router
-- library terpisah dari react, harus diinstall sendiri
-  npm i react-router-dom
-- method yang akan di pakai dari react router saat import 
-  yaitu BrowserRouter
-- 1. import { BrowserRouter, Route, Link }
-  2. bungkus semua tag ke dalam BrowserRouter tag
-  3. jika tag tidak memiliki file sendiri, bungkus dengan tag Route
-     bungkus di props render
-  4. jika memiliki file sendiri pakai route panggil nama componentnya
-  5. tag a diganti dengan tag link
+Redux
+- state management seperti context api
+- reducer ~ state
+- ada 4 bagian utama: 
+    store(menyimpan keseluruhan state),
+      import createStore dari redux
+      store = createStore(nama reducer) 
+    action(deskripsi tindakan yang di lakukan beserta parameternya yang dibawa)
+      bentuk dari action adalah function yang me return object { action, payload }
+    reducer(tindakatan nyata dari action yang di pilih)
+      switch case action.type
+      mewakili state yang akan dirubah, dalam 1 aplikasi, bisa lebih dari 1 reducer, cth: userLog, news dll
+    dispatch(trigger action)
+      bisa dipanggil saat store sudah dibuat
 
-cth hook : const [counter, setCounter] = useState(initial value)
-           setCounter(counter+1)
+- 1. buat reducer, action
+  2. createStore
+  3. import provider dari react-redux
+  3. bungkus app dengan privider, set props store dengan nilai dari create store
+  4. import useSelector dari react-redux di component yang akan akses state
+      var = useSelector(state => state.nama_reducer)
+  5. import useDispatch dari react-redux di component yang akan merubah state
+      dispatch = useDispatch()
+      dispatch(nama_actionnya)
 
-source:
-React JS Crash Course: https://www.youtube.com/watch?v=sBws8MSXN7A&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5&t=5160s
-React Tutorial For Beginners: https://www.youtube.com/watch?v=dGcsHMXbSOA&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5
+- implementasi basic
+  import { createStore } from 'redux';
+  //actions
+  const increment = () => {
+    return {
+      type: 'INCREMENT'
+    }
+  }
+  //reducers
+  const counter = (state = 0, action) => {
+    switch(action.type) {
+      case 'INCREMENT':
+        return state + 1;
+    }
+  }
+  //store
+  const store = createStore(counter)
+  store.subscribe(() => { console.log(store.getState()) })
+  store.dispatch(increment())
 
 Redux For Beginners | React Redux Tutorial: https://www.youtube.com/watch?v=CVpUuw9XSjY&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=6&t=0s
+Redux Crash Course With React: https://www.youtube.com/watch?v=93p3LxR9xfM&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5&t=0s
+React Context vs Redux - Who wins? : https://www.youtube.com/watch?v=OvM4hIxrqAw&list=PLYjQ_F91Hq2U7WpmJb0L61YiwX0l4n2dh&index=5

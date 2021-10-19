@@ -5,6 +5,13 @@ export function TodoProvider(props) {
     const [todos, setTodos] = useState([])
     const [todosFilter, setTodosFilter] = useState([])
 
+    const todoProps = {
+        todos, 
+        setTodos, 
+        todosFilter, 
+        setTodosFilter,
+    }
+
     // componentDidMount() {
     //     fetch(`https://jsonplaceholder.typicode.com/todos?_limit=10`)
     //       .then(response => response.json())
@@ -28,7 +35,7 @@ export function TodoProvider(props) {
     // }
 
     return(
-        <TodoContext.Provider value={[todos, setTodos, todosFilter, setTodosFilter]}>
+        <TodoContext.Provider value={todoProps}>
             {props.children}
         </TodoContext.Provider>
     )

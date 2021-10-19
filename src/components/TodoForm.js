@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 import { TodoContext } from '../context/TodoContext';
 
 function TodoForm() {
-    const [todos, setTodos] = useContext(TodoContext);
+    const { todos, setTodos } = useContext(TodoContext);
     const [name, setName] = useState('');
 
     const onChange = (e) => setName(e.target.value)

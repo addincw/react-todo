@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { TodoContext } from '../context/TodoContext';
 
 function TodoFilter() {
-    const [todos, setTodos, todosFilter, setTodosFilter] = useContext(TodoContext);
+    const { todos, setTodosFilter } = useContext(TodoContext);
     const [filterTitle, setFilterTitle] = useState('');
     const [filterIsComplete, setFilterIsComplete] = useState(false);
 

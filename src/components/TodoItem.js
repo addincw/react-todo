@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { TodoContext } from '../context/TodoContext';
 
 function TodoItem(props) {
-    const [todos, setTodos] = useContext(TodoContext);
+    const { todos, setTodos } = useContext(TodoContext);
     const { todo } = props
     
     const onChange = () => {
@@ -17,9 +17,7 @@ function TodoItem(props) {
     }
     const onClick = () => {
         const { id } = props.todo
-        setTodos(todos.filter(todo => {
-            if(todo.id !== id) return todo
-        }))
+        setTodos(todos.filter(todo =>  (todo.id !== id) ? todo : null))
     }
     
     return (

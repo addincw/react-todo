@@ -4,7 +4,7 @@ import { TodoContext } from '../context/TodoContext';
 import TodoItem from './TodoItem';
 
 function TodoList() {
-  let [todos, setTodos, todosFilter] = useContext(TodoContext);
+  let { todos, todosFilter } = useContext(TodoContext);
 
   todos = todosFilter.length > 0 ? todosFilter : todos
 
